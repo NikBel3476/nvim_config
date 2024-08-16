@@ -27,7 +27,7 @@ require("lazy").setup({
 		-- LSP manager
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
+		"neovim/nvim-lspconfig"
 	},
 	-- Vscode-like pictograms
 	{
@@ -53,4 +53,11 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = {
+			"nvim-lua/plenary.nvim"
+		}
+	}
 })

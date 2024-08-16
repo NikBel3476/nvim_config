@@ -10,7 +10,12 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer' },
+    ensure_installed = {
+			'pylsp',
+			'lua_ls',
+			'rust_analyzer',
+			'clangd'
+		},
 })
 
 -- Set different settings for different languages' LSP
@@ -60,5 +65,37 @@ end
 -- 1. use `:Mason` to install corresponding LSP
 -- 2. add configuration below
 lspconfig.pylsp.setup({
+	on_attach = on_attach,
+})
+
+lspconfig.lua_ls.setup({
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach,
+})
+
+lspconfig.clangd.setup({
 	on_attach = on_attach,
 })
