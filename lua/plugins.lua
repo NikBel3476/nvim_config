@@ -24,6 +24,11 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     "tanvirtin/monokai.nvim",
 	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true
+	},
+	{
 		-- LSP manager
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
