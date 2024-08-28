@@ -22,7 +22,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
-    "tanvirtin/monokai.nvim",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
